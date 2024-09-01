@@ -1,17 +1,17 @@
 import { useState } from 'react'
 
 // import './App.css'
-import SignUp from './Signup'
-import Signin from './Signin'
+import Signin from "./pages/authentication/Signin"
+import Signup from "./pages/authentication/Signup"
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-    <Signin/>
-    {/* <Si gnUp/> */}
-        
+      <Signin />
+      {/* <Si gnUp/> */}
+
     </>
   )
 }
