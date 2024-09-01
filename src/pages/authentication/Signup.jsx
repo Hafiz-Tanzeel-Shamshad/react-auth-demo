@@ -1,4 +1,6 @@
+import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -7,18 +9,32 @@ const SignUp = () => {
     password: '',
     confirmPassword: ''
   });
+  const navigate = useNavigate();
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    console.log("func in");
+
     e.preventDefault();
-    // Add your sign-up logic here
+    try {
+      const res = await axios.post("http://localhost:5000/auth/register", formData)
+      navigate('/sign-in')
+      console.log("user created");
+
+    } catch (error) {
+      console.log(error);
+
+    }
+
     console.log('Form Data:', formData);
   };
 
   return (
+
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-6 bg-white shadow-md rounded-lg">
         <h2 className="text-2xl font-bold text-center">Sign Up</h2>
@@ -65,7 +81,7 @@ const SignUp = () => {
               required
             />
           </div>
-          
+
           <button
             type="submit"
             className="w-full px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
@@ -75,6 +91,7 @@ const SignUp = () => {
         </form>
       </div>
     </div>
+
   );
 };
 
