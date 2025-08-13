@@ -27,7 +27,8 @@ It also includes **protected routes** to ensure only authenticated users can acc
 - **JWT** for authentication
 
 ---
-
+📜 License
+This project is licensed under the MIT License.
 
 
 # React + Vite
